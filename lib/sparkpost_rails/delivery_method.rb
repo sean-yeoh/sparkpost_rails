@@ -97,6 +97,7 @@ module SparkPostRails
 
     def prepare_template_content_from sparkpost_data
       @data[:content][:template_id] = sparkpost_data[:template_id]
+      @data[:content][:use_draft_template] = sparkpost_data[:use_draft_template] if sparkpost_data[:use_draft_template]
 
     end
 
