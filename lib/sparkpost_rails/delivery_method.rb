@@ -17,6 +17,8 @@ module SparkPostRails
 
       if sparkpost_data.has_key?(:template_id)
         prepare_template_content_from sparkpost_data
+      elsif sparkpost_data.has_key?(:ab_test_id)
+        prepare_ab_test_content_from sparkpost_data
       else
         prepare_from_address_from mail
         prepare_reply_to_address_from mail
@@ -99,6 +101,10 @@ module SparkPostRails
       @data[:content][:template_id] = sparkpost_data[:template_id]
       @data[:content][:use_draft_template] = sparkpost_data[:use_draft_template] if sparkpost_data[:use_draft_template]
 
+    end
+
+    def prepare_ab_test_content_from sparkpost_data
+      @data[:content][:ab_test_id] = sparkpost_data[:ab_test_id]
     end
 
     def prepare_substitution_data_from sparkpost_data
